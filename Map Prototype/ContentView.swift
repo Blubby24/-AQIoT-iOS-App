@@ -8,14 +8,26 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State var showSheet = false
+    @State var currentMarker:AirQualityMarker?
+    
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+            AirQuilityMap(showSheet: $showSheet, currentMarker: $currentMarker)
+                .overlay(content: {
+                    if showSheet {
+                        VStack{
+                            Spacer()
+                            ContentSheet(showSheet: $showSheet,
+                                         currentMarker: $currentMarker)
+                            .frame(maxHeight: UIScreen.main.bounds.height / 4)
+                            .transition(.move(edge: .bottom))
+                            .background(.white)
+                            .opacity(1.0)
+                        }
+                    }
+                })
         }
-        .padding()
     }
 }
 
