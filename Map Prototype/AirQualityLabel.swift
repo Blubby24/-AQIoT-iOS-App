@@ -11,8 +11,7 @@ import SwiftUI
 struct AirQualityLabel: View{
     
     var marker: AirQualityMarker
-    @Binding var showSheet:Bool
-    @Binding var currentMarker: AirQualityMarker?
+    var onClick: () -> Void
     
     var body: some View{
         ZStack {
@@ -33,9 +32,8 @@ struct AirQualityLabel: View{
         .shadow(radius: 3, x: 0, y: 2)
         .frame(width: 40, height: 40)
         .onTapGesture {
-            print("Annotation \(marker.id) was tapped")
-            self.showSheet = true
-            self.currentMarker = marker
+            // I also need to center the map on the label on click here
+            onClick()
         }
     }
 }

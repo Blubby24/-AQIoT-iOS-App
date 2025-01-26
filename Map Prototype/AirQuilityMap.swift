@@ -20,27 +20,28 @@ struct AirQuilityMap: View{
                          coordinate: CLLocationCoordinate2D(latitude: 41.50616, longitude: -81.60845),
                          imageName: "monument", airQuality:80)]
     
-    @State private var region = MKCoordinateRegion(
-        center: CLLocationCoordinate2D(latitude: 41.50416, longitude: -81.60845),
-        span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
-    )
+    @State private var position: MapCameraPosition = .userLocation(fallback: .region(MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 41.50416, longitude: -81.60845), span: MKCoordinateSpan(latitudeDelta: 0.003, longitudeDelta: 0.003))))
     
     @Binding var showSheet: Bool
     @Binding var currentMarker: AirQualityMarker?
     
     var body: some View {
-        Map{
+        Map(position: $position){
             ForEach(markers){ marker in
                 MapCircle(center:marker.coordinate, radius:marker.radius)
                     .foregroundStyle(marker.getAQColor().opacity(0.30))
                 
                 Annotation(marker.title, coordinate:marker.coordinate) {
-                    AirQualityLabel(marker: marker, showSheet: $showSheet, currentMarker: $currentMarker)
+                    AirQualityLabel(marker: marker, onClick: {
+                        self.showSheet = true
+                        self.currentMarker = marker
+                        withAnimation {
+                            position = .region(MKCoordinateRegion(center:marker.coordinate, span: MKCoordinateSpan(latitudeDelta: 0.0015, longitudeDelta: 0.0015)))
+                        }
+                    })
                 }
             }
         }
     }
 }
-
-
 
