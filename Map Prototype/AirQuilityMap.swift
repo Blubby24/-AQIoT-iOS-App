@@ -35,70 +35,10 @@ struct AirQuilityMap: View{
                     .foregroundStyle(marker.getAQColor().opacity(0.30))
                 
                 Annotation(marker.title, coordinate:marker.coordinate) {
-                    ZStack {
-                        Image(systemName: "circle.fill")
-                            .resizable()
-                            .frame(width: 30, height: 30)
-                            .foregroundColor(.white)
-                        
-                        Circle()
-                            .stroke(marker.getAQColor(), lineWidth: 3)
-                            .frame(width: 29, height: 29)
-                        
-                        Text(String(marker.airQuality))
-                            .font(.system(size: 10))
-                            .bold()
-                            .foregroundColor(.black)
-                    }
-                    .shadow(radius: 3, x: 0, y: 2)
-                    .frame(width: 40, height: 40)
-                    .onTapGesture {
-                        // This is where we put the on click functionality
-                        print("Annotation \(marker.id) was tapped")
-                        self.showSheet = true
-                        self.currentMarker = marker
-                    }
+                    AirQualityLabel(marker: marker, showSheet: $showSheet, currentMarker: $currentMarker)
                 }
             }
         }
-    }
-}
-
-struct ContentSheet: View {
-    @Binding var showSheet:Bool
-    @Binding var currentMarker:AirQualityMarker?
-    
-    var body: some View {
-        VStack() {
-            HStack{
-                Button(action: {
-                    self.showSheet = false
-                }) {
-                    Text("Close")
-                        .padding()
-                        .background(Color.red)
-                        .foregroundColor(.white)
-                        .cornerRadius(8)
-                }
-                Spacer()
-            }
-            Spacer()
-            if !(currentMarker == nil){
-                ZStack{
-                    Circle()
-                        .stroke(currentMarker!.getAQColor(), lineWidth: 3)
-                        .frame(width: 50, height: 50)
-                    Text(String(currentMarker!.airQuality))
-                        .padding()
-                        .foregroundColor(.black)
-                        .cornerRadius(8)
-
-                }
-                Spacer()
-            }
-            
-        }
-        .background(Color.gray.opacity(0.1))
     }
 }
 

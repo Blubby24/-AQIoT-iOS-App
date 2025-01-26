@@ -14,7 +14,8 @@ struct ContentView: View {
     var body: some View {
         VStack {
             AirQuilityMap(showSheet: $showSheet, currentMarker: $currentMarker)
-                .overlay(content: {
+            // This can't be the best way to do this
+                .overlay(content:{
                     if showSheet {
                         VStack{
                             Spacer()

@@ -28,6 +28,8 @@ struct AirQualityMarker: Identifiable{
     }
     
     func getAQColor() -> Color{
+        // A good idea would be change this so that it starts very green and becomes more red over time continuously 
+        // Some kind of gradiant from green to yellow to organge to red
         if(self.airQuality <= 20){
             return Color.green
         }
