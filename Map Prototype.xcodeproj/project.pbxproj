@@ -6,30 +6,16 @@
 	objectVersion = 77;
 	objects = {
 
-/* Begin PBXContainerItemProxy section */
-		9061F3D62CE6B12500A92F43 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 9061F3BD2CE6B12400A92F43 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 9061F3C42CE6B12400A92F43;
-			remoteInfo = "Map Prototype";
-		};
-		9061F3E02CE6B12500A92F43 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 9061F3BD2CE6B12400A92F43 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 9061F3C42CE6B12400A92F43;
-			remoteInfo = "Map Prototype";
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
-		9061F3C52CE6B12400A92F43 /* Map Prototype.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Map Prototype.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		9061F3D52CE6B12500A92F43 /* Map PrototypeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Map PrototypeTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		9061F3DF2CE6B12500A92F43 /* Map PrototypeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Map PrototypeUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9061F3C52CE6B12400A92F43 /* Map Prototype.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = "Map Prototype.app"; path = "/Users/estebanlinarez/swiftFiles/-AQIoT-iOS-App/build/Debug-iphoneos/Map Prototype.app"; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		50BCC90F2D89E359008F44E6 /* Sensors */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Sensors;
+			sourceTree = "<group>";
+		};
 		9061F3C72CE6B12400A92F43 /* Map Prototype */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = "Map Prototype";
@@ -55,20 +41,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		9061F3D22CE6B12500A92F43 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		9061F3DC2CE6B12500A92F43 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -78,18 +50,8 @@
 				9061F3C72CE6B12400A92F43 /* Map Prototype */,
 				9061F3D82CE6B12500A92F43 /* Map PrototypeTests */,
 				9061F3E22CE6B12500A92F43 /* Map PrototypeUITests */,
-				9061F3C62CE6B12400A92F43 /* Products */,
+				50BCC90F2D89E359008F44E6 /* Sensors */,
 			);
-			sourceTree = "<group>";
-		};
-		9061F3C62CE6B12400A92F43 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				9061F3C52CE6B12400A92F43 /* Map Prototype.app */,
-				9061F3D52CE6B12500A92F43 /* Map PrototypeTests.xctest */,
-				9061F3DF2CE6B12500A92F43 /* Map PrototypeUITests.xctest */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -108,6 +70,7 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
+				50BCC90F2D89E359008F44E6 /* Sensors */,
 				9061F3C72CE6B12400A92F43 /* Map Prototype */,
 			);
 			name = "Map Prototype";
@@ -116,52 +79,6 @@
 			productName = "Map Prototype";
 			productReference = 9061F3C52CE6B12400A92F43 /* Map Prototype.app */;
 			productType = "com.apple.product-type.application";
-		};
-		9061F3D42CE6B12500A92F43 /* Map PrototypeTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 9061F3EC2CE6B12500A92F43 /* Build configuration list for PBXNativeTarget "Map PrototypeTests" */;
-			buildPhases = (
-				9061F3D12CE6B12500A92F43 /* Sources */,
-				9061F3D22CE6B12500A92F43 /* Frameworks */,
-				9061F3D32CE6B12500A92F43 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				9061F3D72CE6B12500A92F43 /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				9061F3D82CE6B12500A92F43 /* Map PrototypeTests */,
-			);
-			name = "Map PrototypeTests";
-			packageProductDependencies = (
-			);
-			productName = "Map PrototypeTests";
-			productReference = 9061F3D52CE6B12500A92F43 /* Map PrototypeTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		9061F3DE2CE6B12500A92F43 /* Map PrototypeUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 9061F3EF2CE6B12500A92F43 /* Build configuration list for PBXNativeTarget "Map PrototypeUITests" */;
-			buildPhases = (
-				9061F3DB2CE6B12500A92F43 /* Sources */,
-				9061F3DC2CE6B12500A92F43 /* Frameworks */,
-				9061F3DD2CE6B12500A92F43 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				9061F3E12CE6B12500A92F43 /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				9061F3E22CE6B12500A92F43 /* Map PrototypeUITests */,
-			);
-			name = "Map PrototypeUITests";
-			packageProductDependencies = (
-			);
-			productName = "Map PrototypeUITests";
-			productReference = 9061F3DF2CE6B12500A92F43 /* Map PrototypeUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
 
@@ -176,14 +93,6 @@
 					9061F3C42CE6B12400A92F43 = {
 						CreatedOnToolsVersion = 16.1;
 					};
-					9061F3D42CE6B12500A92F43 = {
-						CreatedOnToolsVersion = 16.1;
-						TestTargetID = 9061F3C42CE6B12400A92F43;
-					};
-					9061F3DE2CE6B12500A92F43 = {
-						CreatedOnToolsVersion = 16.1;
-						TestTargetID = 9061F3C42CE6B12400A92F43;
-					};
 				};
 			};
 			buildConfigurationList = 9061F3C02CE6B12400A92F43 /* Build configuration list for PBXProject "Map Prototype" */;
@@ -196,33 +105,17 @@
 			mainGroup = 9061F3BC2CE6B12400A92F43;
 			minimizedProjectReferenceProxies = 1;
 			preferredProjectObjectVersion = 77;
-			productRefGroup = 9061F3C62CE6B12400A92F43 /* Products */;
+			productRefGroup = 9061F3BC2CE6B12400A92F43;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				9061F3C42CE6B12400A92F43 /* Map Prototype */,
-				9061F3D42CE6B12500A92F43 /* Map PrototypeTests */,
-				9061F3DE2CE6B12500A92F43 /* Map PrototypeUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		9061F3C32CE6B12400A92F43 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		9061F3D32CE6B12500A92F43 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		9061F3DD2CE6B12500A92F43 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -239,34 +132,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		9061F3D12CE6B12500A92F43 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		9061F3DB2CE6B12500A92F43 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		9061F3D72CE6B12500A92F43 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 9061F3C42CE6B12400A92F43 /* Map Prototype */;
-			targetProxy = 9061F3D62CE6B12500A92F43 /* PBXContainerItemProxy */;
-		};
-		9061F3E12CE6B12500A92F43 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 9061F3C42CE6B12400A92F43 /* Map Prototype */;
-			targetProxy = 9061F3E02CE6B12500A92F43 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		9061F3E72CE6B12500A92F43 /* Debug */ = {
@@ -444,74 +310,6 @@
 			};
 			name = Release;
 		};
-		9061F3ED2CE6B12500A92F43 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.1;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "DorianInc.Map-PrototypeTests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Map Prototype.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Map Prototype";
-			};
-			name = Debug;
-		};
-		9061F3EE2CE6B12500A92F43 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.1;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "DorianInc.Map-PrototypeTests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Map Prototype.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Map Prototype";
-			};
-			name = Release;
-		};
-		9061F3F02CE6B12500A92F43 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "DorianInc.Map-PrototypeUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = "Map Prototype";
-			};
-			name = Debug;
-		};
-		9061F3F12CE6B12500A92F43 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "DorianInc.Map-PrototypeUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = "Map Prototype";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -529,24 +327,6 @@
 			buildConfigurations = (
 				9061F3EA2CE6B12500A92F43 /* Debug */,
 				9061F3EB2CE6B12500A92F43 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		9061F3EC2CE6B12500A92F43 /* Build configuration list for PBXNativeTarget "Map PrototypeTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				9061F3ED2CE6B12500A92F43 /* Debug */,
-				9061F3EE2CE6B12500A92F43 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		9061F3EF2CE6B12500A92F43 /* Build configuration list for PBXNativeTarget "Map PrototypeUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				9061F3F02CE6B12500A92F43 /* Debug */,
-				9061F3F12CE6B12500A92F43 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
