@@ -9,8 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     @State var showSheet = false
-    @State var currentMarker:AirQualityMarker?
-    
+    @State var currentMarker:AirQualityMarker?    
     var body: some View {
         VStack {
             AirQuilityMap(showSheet: $showSheet, currentMarker: $currentMarker)

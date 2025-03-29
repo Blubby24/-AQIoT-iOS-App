@@ -14,4 +14,3 @@ struct Sensors: Identifiable, Codable {
     var type: String
     var description: String
 }
-

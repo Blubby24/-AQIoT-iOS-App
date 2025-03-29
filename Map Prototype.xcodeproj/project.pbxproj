@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXFileReference section */
-		9061F3C52CE6B12400A92F43 /* Map Prototype.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = "Map Prototype.app"; path = "/Users/estebanlinarez/swiftFiles/-AQIoT-iOS-App/build/Debug-iphoneos/Map Prototype.app"; sourceTree = "<absolute>"; };
+		5079E92E2D971500008A9B41 /* Map Prototype.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Map Prototype.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -51,6 +51,7 @@
 				9061F3D82CE6B12500A92F43 /* Map PrototypeTests */,
 				9061F3E22CE6B12500A92F43 /* Map PrototypeUITests */,
 				50BCC90F2D89E359008F44E6 /* Sensors */,
+				5079E92E2D971500008A9B41 /* Map Prototype.app */,
 			);
 			sourceTree = "<group>";
 		};
@@ -77,7 +78,7 @@
 			packageProductDependencies = (
 			);
 			productName = "Map Prototype";
-			productReference = 9061F3C52CE6B12400A92F43 /* Map Prototype.app */;
+			productReference = 5079E92E2D971500008A9B41 /* Map Prototype.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
