@@ -40,7 +40,7 @@ class ReadingsModel {
             
             do {
                 let jsonDecoder = JSONDecoder()
-                let (data, response) = try await session.data(for: urlRequest)
+                let (data, _) = try await session.data(for: urlRequest)
                 let readings = try jsonDecoder.decode([Reading].self, from: data)
                 return readings
             } catch {

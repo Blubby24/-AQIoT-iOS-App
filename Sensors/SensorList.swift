@@ -15,8 +15,6 @@ struct SensorList: View {
     
     var body: some View {
         VStack{
-            Text("model readings: \(model.readings.first)")
-            
             List($sensors, id: \.id){ $sensor in
                 NavigationLink{
                     DashBoardView()
@@ -27,9 +25,6 @@ struct SensorList: View {
         }
         .navigationTitle("Sensors")
         .frame(maxHeight: .infinity, alignment: .top)
-        .task {
-            model.readings = await model.getReadings()
-        }
     }
 }
 

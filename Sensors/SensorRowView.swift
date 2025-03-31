@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct SensorRowView: View {
+    
     @Binding var sensor: Sensors
     var body: some View {
         HStack{
