@@ -31,13 +31,14 @@ class ReadingsModel {
     var reading: Reading?
     var readings: [Reading] = []
     
-    func getReadings() async -> [Reading] {
-        let endpoint = URL(string: "https://caslab.case.edu/air/rest.php")
+    func getReadings(limit: Int, sensorId: Int? = nil) async -> [Reading] {
+        let endpoint = URL(
+            string: "https://caslab.case.edu/air/el.php?data=readings&limit=\(limit)&sensor_id=\(sensorId ?? 4)"
+        )
         let session = URLSession(configuration: .default)
         
         if let url = endpoint {
             let urlRequest = URLRequest(url: url)
-            
             do {
                 let jsonDecoder = JSONDecoder()
                 let (data, _) = try await session.data(for: urlRequest)
