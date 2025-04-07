@@ -8,19 +8,23 @@
 import SwiftUI
 
 struct SensorList: View {
-    @State var sensors: [Sensors] = [Sensors(sensorId: 34567, name: "test", type: "aq sensor", description: "sensor detecting air quality"), Sensors(sensorId: 43532, name: "test2", type: "aq sensor", description: "aq sensor")]
-    
-    @State var model = ReadingsModel()
-    
+    @State var model = SensorModel()
+    @State var selectedSensor: Sensors?
     
     var body: some View {
-        VStack{
-            List($sensors, id: \.id){ $sensor in
-                NavigationLink{
-                    DashBoardView()
-                } label: {
-                    SensorRowView(sensor: .constant(sensor))
+        NavigationStack {
+            VStack{
+                    List($model.sensors, id: \.sensor_id){ $sensor in
+                        NavigationLink{
+                            // pass in selectedSensor as a binding
+                            DashBoardView(sensor: $sensor)
+                        } label: {
+                            SensorRowView(sensor: .constant(sensor))
+                        }
                 }
+            }
+            .task {
+                model.sensors = await model.fetchSensors()
             }
         }
         .navigationTitle("Sensors")

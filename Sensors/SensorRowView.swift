@@ -17,7 +17,7 @@ struct SensorRowView: View {
             VStack(alignment: .leading){
                 Text(sensor.name)
                     .font(.headline)
-                Text(sensor.description)
+                Text(sensor.description ?? "no description")
                     .font(.subheadline)
                     .foregroundStyle(.secondary)
             }
@@ -28,7 +28,15 @@ struct SensorRowView: View {
 }
 
 #Preview {
-    @State @Previewable var sensor: Sensors = Sensors(sensorId: 34567, name: "test", type: "aq sensor", description: "sensor detecting air quality")
+    @State @Previewable var sensor: Sensors = Sensors(
+        name: "test",
+        sensor_id: 80,
+        description: "sensor detecting air quality",
+        lat: 12.34,
+        lng: 56.78,
+        start_date: "2025-03-27 09:01:00",
+        type: "OUTDOOR"
+    )
                                                     
     SensorRowView(sensor: .constant(sensor))
 }
