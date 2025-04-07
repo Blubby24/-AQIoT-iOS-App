@@ -30,9 +30,9 @@ struct ContentSheet: View {
                 if !(currentMarker == nil){
                     ZStack{
                         Circle()
-                            .stroke(currentMarker!.getAQColor(), lineWidth: 3)
+                            .stroke(currentMarker!.getAQColor(for: currentMarker!.cachedReading), lineWidth: 3)
                             .frame(width: 50, height: 50)
-                        Text(String(currentMarker!.airQuality))
+                        Text(String(currentMarker!.cachedReading ?? -1))
                             .padding()
                             .foregroundColor(.black)
                             .cornerRadius(8)

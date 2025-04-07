@@ -8,52 +8,44 @@ import SwiftUI
 import MapKit
 import CoreLocation
 
-struct AirQualityMarker: Identifiable{
-    
-    
+struct AirQualityMarker: Identifiable {
     var id = UUID()
-    var title: String
-    var coordinate: CLLocationCoordinate2D
     var imageName: String
     var radius: Double
-    var airQuality:Int
+    var sensor: Sensors
+    let readingModel: ReadingsModel
+    var cachedReading: Double? = nil // <-- Optional preloaded reading
     
-    // Initializer
-    init(title: String, coordinate: CLLocationCoordinate2D, imageName: String, radius:Double=50, airQuality:Int) {
-        self.title = title
-        self.coordinate = coordinate
+    var coordinate: CLLocationCoordinate2D {
+        CLLocationCoordinate2D(latitude: sensor.lat, longitude: sensor.lng)
+    }
+    
+    func getAQColor(for value: Double?) -> Color {
+        guard let value = value else { return .gray }
+        switch value {
+        case 0..<20: return .green
+        case 20..<40: return .orange
+        default: return .red
+        }
+    }
+
+    func getMarkerSymbol(for value: Double?) -> String {
+        guard let value = value else { return "questionmark.circle" }
+        switch value {
+        case 0..<20: return "sun.min"
+        case 20..<40: return "wind"
+        default: return "smoke"
+        }
+    }
+}
+
+extension AirQualityMarker {
+    init(sensor: Sensors, readingModel: ReadingsModel, imageName: String = "smoke.fill", radius: Double = 40) {
+        self.sensor = sensor
+        self.readingModel = readingModel
         self.imageName = imageName
         self.radius = radius
-        self.airQuality = airQuality
+        self.cachedReading = nil
     }
-    
-    func getAQColor() -> Color{
-        // A good idea would be change this so that it starts very green and becomes more red over time continuously 
-        // Some kind of gradiant from green to yellow to organge to red
-        if(self.airQuality <= 20){
-            return Color.green
-        }
-        if(self.airQuality <= 40){
-            return Color.orange
-        }
-        return Color.red
-    }
-    
-    func getMarkerSymbol() -> String{
-        if(self.airQuality <= 20){
-            return "sun.min"
-        }
-        if(self.airQuality <= 40){
-            return "wind"
-        }
-        return "smoke"
-    }
-    
-    func getAQData() -> Dictionary<String, String>{
-        return [
-            "title": self.title,
-            "Air Qulity Number": String(self.airQuality)
-        ]
-    }
-    
 }
+

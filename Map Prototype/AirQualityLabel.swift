@@ -21,10 +21,10 @@ struct AirQualityLabel: View{
                 .foregroundColor(.white)
             
             Circle()
-                .stroke(marker.getAQColor(), lineWidth: 3)
+                .stroke(marker.getAQColor(for: marker.cachedReading), lineWidth: 3)
                 .frame(width: 29, height: 29)
             
-            Text(String(marker.airQuality))
+            Text(String(marker.cachedReading ?? -1))
                 .font(.system(size: 10))
                 .bold()
                 .foregroundColor(.black)

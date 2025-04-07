@@ -49,7 +49,7 @@ struct BarChart: View {
         .frame(height: 250)
     }
 }
-
+/*
 #Preview {
     @State @Previewable var sensor: Sensors = Sensors(
         name: "test",
@@ -65,4 +65,4 @@ struct BarChart: View {
     
     //BarChart(sensor: .constant(sensor), dailyData: .constant(dailyData), weeklyData: .constant(dailyData), monthlyData: .constant(dailyData))
 }
-
+*/

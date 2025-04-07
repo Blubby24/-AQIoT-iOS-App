@@ -53,7 +53,7 @@ struct SensorReadings: View {
         }
     }
 }
-
+/*
 #Preview {
     
     @State @Previewable var sensor: Sensors = Sensors(
@@ -69,3 +69,4 @@ struct SensorReadings: View {
     //@State @Previewable var readings: [Reading] = []
     //SensorReadings(sensor: .constant(sensor), readings: .constant(readings))
 }
+*/
