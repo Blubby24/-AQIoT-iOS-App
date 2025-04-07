@@ -45,7 +45,7 @@ struct DashBoardView: View {
                 SensorReadings(title: .constant("Weekly Readings"), sensor: .constant(sensor), readings: .constant(weeklyReadings))
                 SensorReadings(title: .constant("Monthly Readings"), sensor: .constant(sensor), readings: .constant(monthlyReadings))
                 // bar graphs for daily, weekly, and monthly averages, should all be in one graph???
-                
+                BarChart(sensor: .constant(sensor), dailyData: .constant(dailyReadings), weeklyData: .constant(weeklyReadings), monthlyData: .constant(monthlyReadings))
                 
                 
             }
