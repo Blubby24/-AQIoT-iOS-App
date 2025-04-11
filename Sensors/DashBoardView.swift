@@ -28,10 +28,20 @@ func filterTodaysReadings(_ readings: [Reading]) -> [Reading] {
 
 struct DashBoardView: View {
     @Binding var sensor: Sensors
+    @State var isCWRUDeployed: Bool = false
     @State var dailyReadings: [Reading] = []
     @State var weeklyReadings: [Reading] = []
     @State var monthlyReadings: [Reading] = []
     @State var model = ReadingsModel()
+    
+    func checkCWRUDeployment(sensor: Sensors) -> Bool {
+        if sensor.type == "CWRUDeployed" {
+            return true
+        }
+        else {
+            return false
+        }
+    }
  
     var body: some View {
         ScrollView {
@@ -41,9 +51,9 @@ struct DashBoardView: View {
                     .fontWeight(.bold)
                 
                 // sensor readings
-                SensorReadings(title: .constant("Daily Readings"), sensor: .constant(sensor), readings: .constant(dailyReadings))
-                SensorReadings(title: .constant("Weekly Readings"), sensor: .constant(sensor), readings: .constant(weeklyReadings))
-                SensorReadings(title: .constant("Monthly Readings"), sensor: .constant(sensor), readings: .constant(monthlyReadings))
+                SensorReadings(title: .constant("Daily Readings"), sensor: .constant(sensor), readings: .constant(dailyReadings), isCWRUDeployed: .constant(checkCWRUDeployment(sensor: sensor)))
+                SensorReadings(title: .constant("Weekly Readings"), sensor: .constant(sensor), readings: .constant(weeklyReadings), isCWRUDeployed: .constant(checkCWRUDeployment(sensor: sensor)))
+                SensorReadings(title: .constant("Monthly Readings"), sensor: .constant(sensor), readings: .constant(monthlyReadings), isCWRUDeployed: .constant(checkCWRUDeployment(sensor: sensor)))
                 // bar graphs for daily, weekly, and monthly averages, should all be in one graph???
                 BarChart(sensor: .constant(sensor), dailyData: .constant(dailyReadings), weeklyData: .constant(weeklyReadings), monthlyData: .constant(monthlyReadings))
                 

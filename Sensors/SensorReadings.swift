@@ -12,15 +12,61 @@ struct SensorReadings: View {
     @Binding var title: String
     @Binding var sensor: Sensors?
     @Binding var readings: [Reading]
+    @Binding var isCWRUDeployed: Bool
+    @State var defaultSensor = Sensors(
+        name: "test",
+        sensor_id: 80,
+        description: "sensor detecting air quality",
+        lat: 12.34,
+        lng: 56.78,
+        start_date: "2025-03-27 09:01:00",
+        type: "OUTDOOR"
+    )
+    
+    /* function to get average readings for cwru deployed */
+    func computeAvgReadings(_ sensor: Sensors) -> [Reading] {
+        var avgReadings: [Reading] = []
+        var average = 0;
+        var count = 0;
+        let minuteAverage = 30;
+        
+        if sensor.type != "CWRUDeployed" {
+            return readings
+        }
+        
+        for reading in readings {
+            average += reading.pm25
+            count+=1
+            
+            if count == minuteAverage {
+                average /= minuteAverage
+                let newReading = Reading(reading_id: reading.reading_id,
+                                  sensor_id: reading.sensor_id,
+                                  date: reading.date,
+                                  name: reading.name,
+                                  pm25: reading.pm25,
+                                  lat: reading.lat,
+                                  lng: reading.lng)
+                
+                avgReadings.append(newReading)
+                average = 0
+                count = 0
+            }
+        }
+        
+        return avgReadings
+    }
+    
+    
     
     var body: some View {
             VStack {
-                Text("\(title) for \(sensor?.name ?? "default")")
+                Text("\(title) for \(sensor?.name ?? "default sensor")")
                     .font(.headline)
                     .fontWeight(.bold)
                 if !readings.isEmpty {
                     Chart {
-                        ForEach(readings, id: \.reading_id) { reading in
+                        ForEach(computeAvgReadings(sensor ?? defaultSensor), id: \.reading_id) { reading in
                             
                             LineMark (
                                 x: .value("date", reading.date),

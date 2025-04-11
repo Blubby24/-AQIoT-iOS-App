@@ -15,8 +15,16 @@ struct SensorRowView: View {
             Image(systemName: "sensor.fill")
             
             VStack(alignment: .leading){
-                Text(sensor.name)
-                    .font(.headline)
+                HStack {
+                    Text(sensor.name)
+                        .font(.headline)
+                    Spacer()
+                    Text("online")
+                        .font(.headline)
+                        .background(Color.green)
+                        .clipShape(Capsule())
+                        .padding()
+                }
                 Text(sensor.description ?? "no description")
                     .font(.subheadline)
                     .foregroundStyle(.secondary)
@@ -25,6 +33,7 @@ struct SensorRowView: View {
         }
         .padding(.vertical)
     }
+    
 }
 
 #Preview {

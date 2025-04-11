@@ -26,9 +26,9 @@ struct SensorList: View {
             .task {
                 model.sensors = await model.fetchSensors()
             }
+            .navigationTitle("Sensors")
+            .frame(maxHeight: .infinity, alignment: .top)
         }
-        .navigationTitle("Sensors")
-        .frame(maxHeight: .infinity, alignment: .top)
     }
 }
 
