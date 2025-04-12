@@ -13,6 +13,7 @@ struct SensorReadings: View {
     @Binding var sensor: Sensors?
     @Binding var readings: [Reading]
     @Binding var isCWRUDeployed: Bool
+    @Binding var isDaily: Bool
     @State var defaultSensor = Sensors(
         name: "test",
         sensor_id: 80,
@@ -23,15 +24,30 @@ struct SensorReadings: View {
         type: "OUTDOOR"
     )
     
+    
+    func formatDate(_ date: String) -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        
+        if let date = formatter.date(from: date) {
+            formatter.dateFormat = "MM/dd"
+            return formatter.string(from: date)
+        }
+        
+        return date
+    }
+    
+    
     /* function to get average readings for cwru deployed */
     func computeAvgReadings(_ sensor: Sensors) -> [Reading] {
         var avgReadings: [Reading] = []
         var average = 0;
         var count = 0;
-        let minuteAverage = 30;
+        let minuteAverage = 20;
+        
         
         if sensor.type != "CWRUDeployed" {
-            return readings
+            return readings.sorted { $0.date < $1.date }
         }
         
         for reading in readings {
@@ -44,7 +60,7 @@ struct SensorReadings: View {
                                   sensor_id: reading.sensor_id,
                                   date: reading.date,
                                   name: reading.name,
-                                  pm25: reading.pm25,
+                                  pm25: average,
                                   lat: reading.lat,
                                   lng: reading.lng)
                 
@@ -54,21 +70,20 @@ struct SensorReadings: View {
             }
         }
         
-        return avgReadings
+        return avgReadings.sorted { $0.date < $1.date }
     }
-    
-    
-    
+        
     var body: some View {
             VStack {
                 Text("\(title) for \(sensor?.name ?? "default sensor")")
                     .font(.headline)
                     .fontWeight(.bold)
+                    .foregroundStyle(.accent)
                 if !readings.isEmpty {
                     Chart {
                         ForEach(computeAvgReadings(sensor ?? defaultSensor), id: \.reading_id) { reading in
                             
-                            LineMark (
+                            LineMark(
                                 x: .value("date", reading.date),
                                 y: .value("value", reading.pm25)
                             )
@@ -79,22 +94,34 @@ struct SensorReadings: View {
                         }
                     }
                     .chartXAxis{
-                        let indices = stride(from: 0, to: readings.count, by: max(1, readings.count / 6))
-                        let xLabels = indices.map(\.self)
+                        let indices = stride(from: 0, to: readings.count, by: max(1, readings.count / 5))
+                        let xLabels: [String] = indices.map {
+                            let date = readings[$0].date
+                            print(date)
+                            return date
+                        }
                         
                         AxisMarks(position: .bottom, values: xLabels){ value in
                             AxisGridLine()
                             AxisTick()
                             AxisValueLabel {
                                 if let timeStr = value.as(String.self) {
-                                    let time = timeStr.suffix(8)
-                                    Text(time)
+                                    if isDaily {
+                                        let timeStamp = formatDate(timeStr)
+                                        Text(timeStamp)
+                                            .rotationEffect(.degrees(-45))
+                                    }
+                                    else {
+                                        let displayedText = formatDate(timeStr)
+                                        Text(displayedText)
+                                    }
                                 }
                             }
                         }
                     }
                     .padding(.horizontal)
-                    .frame(height: 300)
+                    .padding(.bottom, 20)
+                    .frame(height: 330)
                 }
         }
     }

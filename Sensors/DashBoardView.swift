@@ -33,6 +33,7 @@ struct DashBoardView: View {
     @State var weeklyReadings: [Reading] = []
     @State var monthlyReadings: [Reading] = []
     @State var model = ReadingsModel()
+    @State var isDaily: Bool = true
     
     func checkCWRUDeployment(sensor: Sensors) -> Bool {
         if sensor.type == "CWRUDeployed" {
@@ -47,13 +48,16 @@ struct DashBoardView: View {
         ScrollView {
             VStack {
                 Text("Readings for given \(sensor.name)")
-                    .font(.headline)
+                    .font(.title)
                     .fontWeight(.bold)
+                    .foregroundStyle(.accent)
                 
+                /* information listed about each sensor */
+                SensorInfo(sensor: $sensor)
                 // sensor readings
-                SensorReadings(title: .constant("Daily Readings"), sensor: .constant(sensor), readings: .constant(dailyReadings), isCWRUDeployed: .constant(checkCWRUDeployment(sensor: sensor)))
-                SensorReadings(title: .constant("Weekly Readings"), sensor: .constant(sensor), readings: .constant(weeklyReadings), isCWRUDeployed: .constant(checkCWRUDeployment(sensor: sensor)))
-                SensorReadings(title: .constant("Monthly Readings"), sensor: .constant(sensor), readings: .constant(monthlyReadings), isCWRUDeployed: .constant(checkCWRUDeployment(sensor: sensor)))
+                SensorReadings(title: .constant("Daily PM25 Readings"), sensor: .constant(sensor), readings: .constant(dailyReadings), isCWRUDeployed: .constant(checkCWRUDeployment(sensor: sensor)), isDaily: .constant(true))
+                SensorReadings(title: .constant("Weekly PM25 Readings"), sensor: .constant(sensor), readings: .constant(weeklyReadings), isCWRUDeployed: .constant(checkCWRUDeployment(sensor: sensor)), isDaily: .constant(false))
+                SensorReadings(title: .constant("Monthly PM25 Readings"), sensor: .constant(sensor), readings: .constant(monthlyReadings), isCWRUDeployed: .constant(checkCWRUDeployment(sensor: sensor)), isDaily: .constant(false))
                 // bar graphs for daily, weekly, and monthly averages, should all be in one graph???
                 BarChart(sensor: .constant(sensor), dailyData: .constant(dailyReadings), weeklyData: .constant(weeklyReadings), monthlyData: .constant(monthlyReadings))
                 

@@ -12,22 +12,27 @@ struct SensorRowView: View {
     @Binding var sensor: Sensors
     var body: some View {
         HStack{
-            Image(systemName: "sensor.fill")
+            Image(systemName: "air.purifier.fill")
+                .resizable()
+                .frame(width: 24, height: 24)
+                .foregroundStyle(.accent)
+                .padding(.horizontal)
             
             VStack(alignment: .leading){
                 HStack {
                     Text(sensor.name)
                         .font(.headline)
+                        .foregroundStyle(.accent)
                     Spacer()
                     Text("online")
-                        .font(.headline)
-                        .background(Color.green)
+                        .frame(width: 65, height: 30)
+                        .background(.green)
                         .clipShape(Capsule())
                         .padding()
                 }
                 Text(sensor.description ?? "no description")
                     .font(.subheadline)
-                    .foregroundStyle(.secondary)
+                    .foregroundStyle(.accent)
             }
             Spacer()
         }

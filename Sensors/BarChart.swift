@@ -31,7 +31,9 @@ struct BarChart: View {
     
 
     var body: some View {
-        
+        Text("PM25 Average for each time period")
+            .font(.headline)
+            .foregroundStyle(.accent)
         Chart {
             BarMark(
                 x: .value("Daily", "Daily"),
@@ -47,6 +49,7 @@ struct BarChart: View {
             )
         }
         .frame(height: 250)
+        .foregroundStyle(.green)
     }
 }
 /*

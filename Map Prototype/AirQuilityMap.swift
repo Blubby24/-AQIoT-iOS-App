@@ -57,6 +57,7 @@ struct AirQuilityMap: View {
 
             var enrichedMarkers: [AirQualityMarker] = []
             for var marker in mappedMarkers {
+                /* check if we need sort readings here because I noticed on graphs when adding dates tickmarks were in decending order for dates */
                 let reading = await readingModel.getReadings(limit: 1, sensorId: marker.sensor.sensor_id).first?.pm25 ?? -1
                 marker.cachedReading = Double(reading)
                 enrichedMarkers.append(marker)
