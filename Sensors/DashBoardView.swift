@@ -8,24 +8,6 @@
 import SwiftUI
 import Charts
 
-/*
-func currentDate() -> String {
-    let formatter = DateFormatter()
-    formatter.dateFormat = "yyyy-MM-dd"
-    return formatter.string(from: Date())
-}
-
-
-func filterTodaysReadings(_ readings: [Reading]) -> [Reading] {
-    let todaysReadings = readings.filter { reading in
-        let currentDay = currentDate()
-        return reading.date.hasPrefix(currentDay)
-    }
-    return todaysReadings
-}
-*/
-
-
 struct DashBoardView: View {
     @Binding var sensor: Sensors
     @State var isCWRUDeployed: Bool = false
@@ -36,12 +18,10 @@ struct DashBoardView: View {
     @State var isDaily: Bool = true
     
     func checkCWRUDeployment(sensor: Sensors) -> Bool {
-        if sensor.type == "CWRUDeployed" {
-            return true
-        }
-        else {
+        guard sensor.type == "CWRUDeployed" else {
             return false
         }
+        return true
     }
  
     var body: some View {
