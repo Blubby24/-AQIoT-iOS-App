@@ -48,6 +48,9 @@ struct BarChart: View {
                 y: .value("monthly avg: ", computeAvg(monthlyData))
             )
         }
+        .chartLegend(position: .bottom)
+        .padding(.horizontal)
+        .chartForegroundStyleScale(["Average PM25 Value": .green])
         .frame(height: 250)
         .foregroundStyle(.green)
     }

@@ -93,6 +93,8 @@ struct SensorReadings: View {
                             .symbolSize(30)
                         }
                     }
+                    .chartLegend(position: .topTrailing)
+                    .chartForegroundStyleScale(["PM25 Value": .green])
                     .chartXAxis{
                         let indices = stride(from: 0, to: readings.count, by: max(1, readings.count / 5))
                         let xLabels: [String] = indices.map {
