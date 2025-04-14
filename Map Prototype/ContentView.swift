@@ -9,15 +9,19 @@ import SwiftUI
 
 struct ContentView: View {
     @State var showSheet = false
-    @State var currentMarker:AirQualityMarker?    
+    @State var currentMarker:AirQualityMarker?
+    @State var currentSensor:Sensors?
+    
     var body: some View {
         TabView {
             VStack {
                 AirQuilityMap(showSheet: $showSheet, currentMarker: $currentMarker)
                     .sheet(isPresented: $showSheet) {
                         ContentSheet(showSheet: $showSheet,
-                                     currentMarker: $currentMarker)
+                                     currentMarker: $currentMarker,
+                                     sensor: $currentSensor)
                     }
+                    .onAppear(perform: setSensor)
             }
             .tabItem {
                 Image(systemName: "globe")
@@ -37,6 +41,10 @@ struct ContentView: View {
                 }
         }
         .tint(.accentColor)
+    }
+    
+    func setSensor (){
+        currentSensor = currentMarker?.sensor
     }
 }
 

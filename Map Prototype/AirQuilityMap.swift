@@ -16,7 +16,7 @@ struct AirQuilityMap: View {
     @State private var position: MapCameraPosition = .userLocation(
         fallback: .region(MKCoordinateRegion(
             center: CLLocationCoordinate2D(latitude: 41.50416, longitude: -81.60845),
-            span: MKCoordinateSpan(latitudeDelta: 0.003, longitudeDelta: 0.003)))
+            span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)))
     )
 
     @Binding var showSheet: Bool

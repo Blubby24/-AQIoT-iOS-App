@@ -14,7 +14,7 @@ struct AirQualityMarker: Identifiable {
     var radius: Double
     var sensor: Sensors
     let readingModel: ReadingsModel
-    var cachedReading: Double? = nil // <-- Optional preloaded reading
+    var cachedReading: Double? = nil
     
     var coordinate: CLLocationCoordinate2D {
         CLLocationCoordinate2D(latitude: sensor.lat, longitude: sensor.lng)
